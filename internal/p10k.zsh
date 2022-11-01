@@ -54,60 +54,74 @@ builtin source "${__p9k_root_dir}/internal/worker.zsh"
 builtin source "${__p9k_root_dir}/internal/parser.zsh"
 builtin source "${__p9k_root_dir}/internal/icons.zsh"
 
-# For compatibility with Powerlevel9k. It's not recommended to use mnemonic color
-# names in the configuration except for colors 0-7 as these are standard.
+# Using names found in https://jonasjacek.github.io/colors/. It's not recommended
+# to use mnemonic color names in the configuration except for colors 0-7 as these
+# are standard. Bright colors (9-15) have a "b" prefixed to denote "bright"
 typeset -grA __p9k_colors=(
-            black 000               red 001             green 002            yellow 003
-             blue 004           magenta 005              cyan 006             white 007
-             grey 008            maroon 009              lime 010             olive 011
-             navy 012           fuchsia 013              aqua 014              teal 014
-           silver 015             grey0 016          navyblue 017          darkblue 018
-            blue3 020             blue1 021         darkgreen 022      deepskyblue4 025
-      dodgerblue3 026       dodgerblue2 027            green4 028      springgreen4 029
-       turquoise4 030      deepskyblue3 032       dodgerblue1 033          darkcyan 036
-    lightseagreen 037      deepskyblue2 038      deepskyblue1 039            green3 040
-     springgreen3 041             cyan3 043     darkturquoise 044        turquoise2 045
-           green1 046      springgreen2 047      springgreen1 048 mediumspringgreen 049
-            cyan2 050             cyan1 051           purple4 055           purple3 056
-       blueviolet 057            grey37 059     mediumpurple4 060        slateblue3 062
-       royalblue1 063       chartreuse4 064    paleturquoise4 066         steelblue 067
-       steelblue3 068    cornflowerblue 069     darkseagreen4 071         cadetblue 073
-         skyblue3 074       chartreuse3 076         seagreen3 078       aquamarine3 079
-  mediumturquoise 080        steelblue1 081         seagreen2 083         seagreen1 085
-   darkslategray2 087           darkred 088       darkmagenta 091           orange4 094
-       lightpink4 095             plum4 096     mediumpurple3 098        slateblue1 099
-           wheat4 101            grey53 102    lightslategrey 103      mediumpurple 104
-   lightslateblue 105           yellow4 106      darkseagreen 108     lightskyblue3 110
-         skyblue2 111       chartreuse2 112        palegreen3 114    darkslategray3 116
-         skyblue1 117       chartreuse1 118        lightgreen 120       aquamarine1 122
-   darkslategray1 123         deeppink4 125   mediumvioletred 126        darkviolet 128
-           purple 129     mediumorchid3 133      mediumorchid 134     darkgoldenrod 136
-        rosybrown 138            grey63 139     mediumpurple2 140     mediumpurple1 141
-        darkkhaki 143      navajowhite3 144            grey69 145   lightsteelblue3 146
-   lightsteelblue 147   darkolivegreen3 149     darkseagreen3 150        lightcyan3 152
-    lightskyblue1 153       greenyellow 154   darkolivegreen2 155        palegreen1 156
-    darkseagreen2 157    paleturquoise1 159              red3 160         deeppink3 162
-         magenta3 164       darkorange3 166         indianred 167          hotpink3 168
-         hotpink2 169            orchid 170           orange3 172      lightsalmon3 173
-       lightpink3 174             pink3 175             plum3 176            violet 177
-            gold3 178   lightgoldenrod3 179               tan 180        mistyrose3 181
-         thistle3 182             plum2 183           yellow3 184            khaki3 185
-     lightyellow3 187            grey84 188   lightsteelblue1 189           yellow2 190
-  darkolivegreen1 192     darkseagreen1 193         honeydew2 194        lightcyan1 195
-             red1 196         deeppink2 197         deeppink1 199          magenta2 200
-         magenta1 201        orangered1 202        indianred1 204           hotpink 206
-    mediumorchid1 207        darkorange 208           salmon1 209        lightcoral 210
-   palevioletred1 211           orchid2 212           orchid1 213           orange1 214
-       sandybrown 215      lightsalmon1 216        lightpink1 217             pink1 218
-            plum1 219             gold1 220   lightgoldenrod2 222      navajowhite1 223
-       mistyrose1 224          thistle1 225           yellow1 226   lightgoldenrod1 227
-           khaki1 228            wheat1 229         cornsilk1 230           grey100 231
-            grey3 232             grey7 233            grey11 234            grey15 235
-           grey19 236            grey23 237            grey27 238            grey30 239
-           grey35 240            grey39 241            grey42 242            grey46 243
-           grey50 244            grey54 245            grey58 246            grey62 247
-           grey66 248            grey70 249            grey74 250            grey78 251
-           grey82 252            grey85 253            grey89 254            grey93 255)
+             black 000       chartreuse4 064       darkvioleta 128  darkolivegreen1a 192
+               red 001     darkseagreen4 065           purplea 129    darkseagreen1a 193
+             green 002    paleturquoise4 066       darkorange3 130         honeydew2 194
+            yellow 003         steelblue 067         indianred 131        lightcyan1 195
+              blue 004        steelblue3 068          hotpink3 132              red1 196
+           magenta 005    cornflowerblue 069     mediumorchid3 133         deeppink2 197
+              cyan 006       chartreuse3 070      mediumorchid 134         deeppink1 198
+            silver 007    darkseagreen4a 071     mediumpurple2 135        deeppink1a 199
+              grey 008         cadetblue 072     darkgoldenrod 136         magenta2a 200
+              bred 009        cadetbluea 073      lightsalmon3 137          magenta1 201
+            bgreen 010          skyblue3 074         rosybrown 138        orangered1 202
+           byellow 011        steelblue1 075            grey63 139        indianred1 203
+             bblue 012      chartreuse3a 076    mediumpurple2a 140       indianred1a 204
+          bmagenta 013        palegreen3 077     mediumpurple1 141           hotpink 205
+             bcyan 014         seagreen3 078             gold3 142          hotpinka 206
+             white 015       aquamarine3 079         darkkhaki 143    mediumorchid1a 207
+             grey0 016   mediumturquoise 080      navajowhite3 144        darkorange 208
+          navyblue 017       steelblue1a 081            grey69 145           salmon1 209
+          darkblue 018      chartreuse2a 082   lightsteelblue3 146        lightcoral 210
+             blue3 019         seagreen2 083    lightsteelblue 147    palevioletred1 211
+            blue3a 020         seagreen1 084           yellow3 148           orchid2 212
+             blue1 021        seagreen1a 085  darkolivegreen3b 149           orchid1 213
+         darkgreen 022       aquamarine1 086    darkseagreen3a 150           orange1 214
+      deepskyblue4 023    darkslategray2 087     darkseagreen2 151        sandybrown 215
+     deepskyblue4a 024          darkreda 088        lightcyan3 152      lightsalmon1 216
+     deepskyblue4b 025        deeppink4a 089     lightskyblue1 153        lightpink1 217
+       dodgerblue3 026       darkmagenta 090       greenyellow 154             pink1 218
+       dodgerblue2 027      darkmagentaa 091   darkolivegreen2 155             plum1 219
+            green4 028        darkviolet 092       palegreen1a 156             gold1 220
+      springgreen4 029            purple 093    darkseagreen2a 157  lightgoldenrod2a 221
+        turquoise4 030          orange4a 094     darkseagreen1 158  lightgoldenrod2b 222
+      deepskyblue3 031        lightpink4 095    paleturquoise1 159      navajowhite1 223
+     deepskyblue3a 032             plum4 096             red3a 160        mistyrose1 224
+       dodgerblue1 033     mediumpurple3 097         deeppink3 161          thistle1 225
+            green3 034    mediumpurple3a 098        deeppink3a 162           yellow1 226
+      springgreen3 035        slateblue1 099         magenta3a 163   lightgoldenrod1 227
+          darkcyan 036           yellow4 100         magenta3b 164            khaki1 228
+     lightseagreen 037            wheat4 101          magenta2 165            wheat1 229
+      deepskyblue2 038            grey53 102      darkorange3a 166         cornsilk1 230
+      deepskyblue1 039    lightslategrey 103        indianreda 167           grey100 231
+           green3a 040      mediumpurple 104         hotpink3a 168             grey3 232
+     springgreen3a 041    lightslateblue 105          hotpink2 169             grey7 233
+      springgreen2 042          yellow4a 106            orchid 170            grey11 234
+             cyan3 043   darkolivegreen3 107     mediumorchid1 171            grey15 235
+     darkturquoise 044      darkseagreen 108           orange3 172            grey19 236
+        turquoise2 045     lightskyblue3 109     lightsalmon3a 173            grey23 237
+            green1 046    lightskyblue3a 110        lightpink3 174            grey27 238
+     springgreen2a 047          skyblue2 111             pink3 175            grey30 239
+      springgreen1 048       chartreuse2 112             plum3 176            grey35 240
+ mediumspringgreen 049  darkolivegreen3a 113            violet 177            grey39 241
+             cyan2 050       palegreen3a 114            gold3a 178            grey42 242
+             cyan1 051     darkseagreen3 115   lightgoldenrod3 179            grey46 243
+           darkred 052    darkslategray3 116               tan 180            grey50 244
+         deeppink4 053          skyblue1 117        mistyrose3 181            grey54 245
+           purple4 054       chartreuse1 118          thistle3 182            grey58 246
+          purple4a 055       lightgreena 119             plum2 183            grey62 247
+           purple3 056       lightgreenb 120          yellow3a 184            grey66 248
+        blueviolet 057        palegreen1 121            khaki3 185            grey70 249
+           orange4 058      aquamarine1a 122   lightgoldenrod2 186            grey74 250
+            grey37 059    darkslategray1 123      lightyellow3 187            grey78 251
+     mediumpurple4 060              red3 124            grey84 188            grey82 252
+        slateblue3 061        deeppink4b 125   lightsteelblue1 189            grey85 253
+       slateblue3a 062   mediumvioletred 126           yellow2 190            grey89 254
+        royalblue1 063          magenta3 127   darkolivegreen1 191            grey93 255)
 
 # For compatibility with Powerlevel9k.
 #
